@@ -1,0 +1,22 @@
+
+
+  Test
+    ✓ return 0
+    1) return 10
+
+
+  1 passing (10ms)
+  1 failing
+
+  1) Test return 10:
+
+      AssertionError: expected 11 to equal 10
+      + expected - actual
+
+      -11
+      +10
+      
+      at Context.<anonymous> (test/default.js:27:20)
+
+
+
