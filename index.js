@@ -29,6 +29,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(morgan('dev'));
 
+app.get('/', (req, res, next) => res.json({ message: 'ok' }));
+
 app.get('/utils/md5/:message', (req, res, next) => res.send(md5(req.params.message)));
 
 app.get('/events/:roomid', (req, res, next) => {

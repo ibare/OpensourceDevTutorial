@@ -1,24 +1,32 @@
-const chai = require('chai');
+const test = require('supertest');
+const request = test('http://localhost:3000');
+const roomID = 'test';
 
-chai.should();
+function hasArray(res) {
+  return Array.isArray(res.body);
+}
 
-function V() {}
+describe('Default', () => {
+  var server;
 
-V.prototype.zero = function() { return 0 };
-V.prototype.ten = function() { return 10 };
-
-describe('Test', () => {
-  var v;
-
-  beforeEach(() => {
-     v = new V();
-   });
-
-  it('return 0', () => {
-    v.zero().should.equal(0);
+  it('server working', done => {
+    request
+      .get('/')
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        done();
+      });
   });
 
-  it('return 10', () => {
-    v.ten().should.equal(10);
+  it('event list', done => {
+    request
+      .get('/events/'+roomID)
+      .expect(200)
+      .expect(hasArray)
+      .end((err, res) => {
+        if (err) return done(err);
+        done();
+      });
   });
 });
