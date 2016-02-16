@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 var db = mongoose.connection;
 
-mongoose.connect('mongodb://pikicast:piki1234!@ds047085.mongolab.com:47085/pikitimeline');
+mongoose.connect('mongodb://:@ds047085.mongolab.com:47085/pikitimeline');
 
 db.on('error', () => console.error('connection error!'));
 db.once('open', () => console.log('mongodb connection ok'));
